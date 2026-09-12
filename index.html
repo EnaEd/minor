@@ -1,13 +1,109 @@
 <!doctype html>
-<html lang="en">
+<html lang="ru">
   <head>
     <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>minor</title>
+    <title>Сапёр</title>
+    <style>
+      * {
+        box-sizing: border-box;
+      }
+      body {
+        margin: 0;
+        min-height: 100vh;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        font-family: sans-serif;
+        user-select: none;
+        padding: 20px;
+        background-color: #f5f5f5;
+        color: #333;
+      }
+      h1 {
+        margin-top: 0;
+        margin-bottom: 20px;
+      }
+      .header {
+        margin-bottom: 16px;
+        display: flex;
+        gap: 20px;
+        align-items: center;
+      }
+      .mines-count {
+        font-size: 18px;
+        font-weight: bold;
+      }
+      .reset-btn {
+        font-size: 18px;
+        padding: 6px 14px;
+        cursor: pointer;
+        border-radius: 6px;
+        border: 1px solid #ccc;
+        background: #fff;
+      }
+      .reset-btn:hover {
+        background: #eee;
+      }
+      .status-msg {
+        margin-bottom: 12px;
+        font-size: 18px;
+        font-weight: bold;
+        min-height: 24px;
+      }
+      .status-lost {
+        color: red;
+      }
+      .status-won {
+        color: green;
+      }
+      .board {
+        display: grid;
+        grid-template-columns: repeat(8, 36px);
+        grid-template-rows: repeat(8, 36px);
+        gap: 2px;
+        background-color: #888;
+        padding: 4px;
+        border-radius: 6px;
+      }
+      .cell {
+        width: 36px;
+        height: 36px;
+        background-color: #bbb;
+        color: #000;
+        font-weight: bold;
+        font-size: 16px;
+        border: 2px outset #fff;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 0;
+        outline: none;
+        user-select: none;
+      }
+      .cell.revealed {
+        background-color: #ddd;
+        border: 1px solid #aaa;
+        cursor: default;
+      }
+    </style>
   </head>
   <body>
-    <div id="root"></div>
-    <script type="module" src="/src/main.tsx"></script>
+    <h1>Сапёр</h1>
+
+    <div class="header">
+      <div id="mines-count" class="mines-count">💣 Мин: 10</div>
+      <button id="reset-btn" class="reset-btn">🙂 Заново</button>
+    </div>
+
+    <div id="status-msg" class="status-msg">
+      <span>Правый клик — флаг, левый — открыть</span>
+    </div>
+
+    <div id="board" class="board"></div>
+
+    <script src="script.js"></script>
   </body>
 </html>
